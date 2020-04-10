@@ -7,6 +7,8 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 ### Create a new post
 
+inline math $O(\log N)$ finished.
+
 ``` bash
 $ hexo new "My New Post"
 ```
