@@ -1,7 +1,7 @@
 ---
 title: Tree and Tree Traversal
-date: 2020-04-09 08:06:09
-toc: false
+date: 2020-04-11 11:21:53
+tags:
 ---
 
 ## Types of Trees
@@ -14,25 +14,82 @@ A *binary tree* is a tree data structure in which each node has at most two chil
 
 A *binary search tree* is a binary tree where each node is greater than all node in its left subtree and smaller than all node in its right subtree.
 
-![](Tree-and-Tree-Traversal/image-20200401071611834.png)
+{% mermaid graph TD %}
+1((8)) --> 2((4))
+1 --> 3((10))
+2 --> 4((2))
+2 --> 5((6))
+3 --> 6((9))
+3 --> 7((20))
+{% endmermaid %}
+
+
 
 ### Complete Binary Tree
 
 A *complete binary tree* is a binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.
 
-![](Tree-and-Tree-Traversal/image-20200401072417856.png)
+{% mermaid graph TD %}
+1(( )) --> 2(( ))
+1(( )) --> 3(( ))
+2(( )) --> 4(( ))
+2(( )) --> 5(( ))
+3(( )) --> 6(( ))
+3(( )) --> 7(( ))
+4(( )) --> 8(( ))
+4(( )) --> 9(( ))
+5(( )) --> 10(( ))
+5(( )) --> 11(( ))
+6(( )) --L--> 12(( ))
+{% endmermaid %}
+
+> Diagram: A complete binary tree with height h = 3
+
+
 
 ### Full Binary Tree
 
 A *full binary tree* is a binary tree in which every node has either zero or two children. That is, no nodes have only one child.
 
-![](Tree-and-Tree-Traversal/image-20200401072600855.png)
+{% mermaid graph TD %}
+1(( )) --> 2(( ))
+1(( )) --> 3(( ))
+3(( )) --> 6(( ))
+3(( )) --> 7(( ))
+6(( )) --> 12(( ))
+6(( )) --> 13(( ))
+{% endmermaid %}
+
+> Diagram: A full binary tree of height h = 3
+
+
 
 ### Perfect Binary Tree
 
-A *perfect binary tree* is a binary tree where all leaves are on the same level , and every parent has two children.
+A *perfect binary tree* is a binary tree where all leaves are on the same level , and every parent has two children. A perfect binary tree of height $h$ has $2^{h+1} - 1$ nodes and $2^h$ leaf nodes. 
 
-![](Tree-and-Tree-Traversal/image-20200401072950552.png)
+NOTE: height for root is 0. 
+
+{% mermaid graph TD %}
+1(( )) --> 2(( ))
+1(( )) --> 3(( ))
+2(( )) --> 4(( ))
+2(( )) --> 5(( ))
+3(( )) --> 6(( ))
+3(( )) --> 7(( ))
+4(( )) --> 8(( ))
+4(( )) --> 9(( ))
+5(( )) --> 10(( ))
+5(( )) --> 11(( ))
+6(( )) --> 12(( ))
+6(( )) --> 13(( ))
+7(( )) --> 14(( ))
+7(( )) --> 15(( ))
+{% endmermaid %}
+
+> Diagram: A perfect binary tree of height h = 3
+
+
 
 ### Others
 
@@ -44,6 +101,12 @@ Following are also types of tree but not included in this section:
 - Binary Heaps
 - Tires(Prefix Trees)
 
+
+
+
+
+
+
 ## Binary Tree Traversal
 
 Unlike linear data structures which have only one logical way two traverse them, trees can be traversed in three different ways, pre-order traversal, in-order traversal, post-order traversal. The main difference among these three ways of traversal is the timing of processing current node.
@@ -53,7 +116,6 @@ Unlike linear data structures which have only one logical way two traverse them,
 | Pre-order      | Process current node before processing its left & right subtree |
 | In-order       | Process current node after processing its left subtree but before its right subtree |
 | Post-order     | Process current node after processing its left & right subtree |
-
 
 {% mermaid graph TD %}
 1((1)) --> 2((2))
@@ -125,15 +187,14 @@ void preOrderTraversal(Treenode node) {
 | [199]()                                                      | Binary Tree Right Side View                                  | Medium     | <a href="#199">Solution</a>                    |
 | **[98](https://leetcode.com/problems/validate-binary-search-tree/)** | **Validate Binary Search Tree**                              | **Medium** | <a href="#98">Solution</a>                     |
 | [109](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/) | Convert Sorted List to Binary Search Tree                    | Medium     | <a href="#109">Solution</a>                    |
-| [156](https://www.lintcode.com/problem/binary-tree-upside-down/description) | Binary Tree Upside Down                                      | Medium     | <a href="#156">Solution</a>                    |
 | [114](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/) | Flatten Binary Tree to Linked List                           | Medium     | <a href="#114">Solution</a>                    |
-| [255](https://www.lintcode.com/problem/verify-preorder-sequence-in-binary-search-tree/description) | Verify Preorder Sequence in Binary Search Tree               | Medium     | <a href="#255">Solution</a>                    |
 | [222](https://leetcode.com/problems/count-complete-tree-nodes/) | Count Complete Tree Nodes                                    | Medium     | <a href="#222">Solution</a>                    |
 | [105](https://leetcode.com/problems/count-complete-tree-nodes/) | Construct Binary Tree from Preorder and Inorder Traversal    | Medium     | <a href="#105">Solution</a>                    |
 | **[116](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/)** | **Populating Next Right Pointers in Each Node**              | **Medium** | <a href="#116">Solution</a>                    |
 | **[117](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/)** | **Populating Next Right Pointers in Each Node II**           | **Medium** | <a href="#117">Solution</a>                    |
-| [95](https://leetcode.com/problems/unique-binary-search-trees-ii/) | Unique Binary Search Trees II                                | Medium     | <a href="#95">Solution</a>                     |
+|                                                              |                                                              |            |                                                |
 | [331](https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/) | Verify Preorder Serialization of a Binary Tree               | Medium     | <a href="#331">Solution</a>                    |
+| [255](https://www.lintcode.com/problem/verify-preorder-sequence-in-binary-search-tree/description) | ==Verify Preorder Sequence in Binary Search Tree==           | Medium     | <a href="#255">Solution</a>                    |
 | **[124](https://leetcode.com/problems/binary-tree-maximum-path-sum)** | **Binary Tree Maximum Path Sum**                             | **Hard**   | <a href="#124">Solution</a>                    |
 
 
@@ -168,7 +229,7 @@ void inOrderTraversal(Treenode node) {
 | [99](https://leetcode.com/problems/recover-binary-search-tree/) | Recover Binary Search Tree                                   | Hard       | <a href="#99">Solution</a>  |
 | **[314](https://www.lintcode.com/problem/binary-tree-vertical-order-traversal/description)** | **Binary Tree Vertical Order Traversal**                     | **Medium** | <a href="#314">Solution</a> |
 | [333](https://www.cnblogs.com/grandyang/p/5188938.html)      | Largest BST Subtree                                          | Medium     | <a href="#333">Solution</a> |
-|                                                              |                                                              |            |                             |
+| [156](https://www.lintcode.com/problem/binary-tree-upside-down/description) | Binary Tree Upside                                           | Medium     | <a href="#156">Solution</a> |
 
 
 
@@ -236,12 +297,11 @@ void levelOrderTraversal(Treenode node, int level) {
 | #                                                            | Title                          | Tag                 | Level      | Solution                   |
 | ------------------------------------------------------------ | ------------------------------ | ------------------- | ---------- | -------------------------- |
 | **[96](https://leetcode.com/problems/unique-binary-search-trees/)** | **Unique Binary Search Trees** | Dynamic Programming | **Medium** | <a href="#96">Solution</a> |
+| [95](https://leetcode.com/problems/unique-binary-search-trees-ii/) | Unique Binary Search Trees II  |                     | Medium     | <a href="#95">Solution</a> |
 
 
 
 ## Solution
-
-
 
 <a name="94"></a>
 
@@ -309,6 +369,8 @@ class Solution {
 
 
 
+
+
 <a name="95"></a>
 
 ### 95. Unique Binary Search Trees II
@@ -358,6 +420,8 @@ class Solution {
 
 
 
+
+
 <a name="96"></a>
 
 ### 96. Unique Binary Search Trees
@@ -384,6 +448,8 @@ class Solution {
 
 - 时间复杂度：$O(N)$ 
 - 空间复杂度：$O(N)$ 
+
+
 
 
 
@@ -424,6 +490,8 @@ class Solution {
 
 
 
+
+
 <a name="100"></a>
 
 ### 100. Same Tree 
@@ -458,6 +526,8 @@ class Solution {
 
 
 
+
+
 <a name="101"></a>
 
 ### 101. Symmetric Tree
@@ -477,6 +547,8 @@ public boolean isMirror(TreeNode t1, TreeNode t2) {
 ```
 
 <a href="#pre-order-excercise">Back to excercises</a>
+
+
 
 
 
@@ -597,6 +669,8 @@ class Solution {
 
 
 
+
+
 <a name="107"></a>
 
 ###  107. Binary Tree Level Order Traversal II
@@ -629,6 +703,8 @@ class Solution {
     }
 }
 ```
+
+
 
 
 
@@ -668,6 +744,8 @@ class Solution {
 - Space Complexity: $O(\log N)$ 
 
 <a href="#pre-order-excercise">Back to excercises</a>
+
+
 
 
 
@@ -740,6 +818,8 @@ class Solution {
 - Space Complexity: $O(\log N)$ if the tree is balance, worst case is $O(N)$.
 
 <a href="#post-order-excercise">Back to excercises</a>
+
+
 
 
 
@@ -873,6 +953,8 @@ class Solution {
 
 
 
+
+
 <a name="113"></a>
 
 ### 113. Path Sum II
@@ -918,6 +1000,51 @@ class Solution {
 
 
 
+
+
+<a name="114"></a>
+
+### 114. Flatten Binary Tree to Linked List
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public void flatten(TreeNode root) {
+        if(root == null) return;
+        if(root.left != null) {
+            TreeNode tmp = root.right;
+            root.right = root.left;
+            root.left = null;
+            TreeNode curNode = root.right;
+            while(curNode.right != null) {
+                curNode = curNode.right;
+            }
+            curNode.right = tmp;
+        }
+        flatten(root.right);
+    }
+}
+```
+
+#### Complexity
+
+- Runtime complexity: $O(N)$
+- Space Complexity: $O(N)$  
+
+<a href="#pre-order-excercise">Back to excercises</a>
+
+
+
+
+
 <a name="129"></a>
 
 ### 129. Sum Root to Leaf Numbers
@@ -957,6 +1084,60 @@ class Solution {
 - Space Complexity: $O(\log N)$ 
 
 <a href="#pre-order-excercise">Back to excercises</a>
+
+
+
+
+
+<a name="156"></a>
+
+### 156. Binary Tree Upside Down
+
+In the flip operation, left most node becomes the root of flipped tree and its parent become its right child and the right sibling become its left child and same operation needs to be apply to all left most nodes.
+
+```java
+/**
+ * Definition of TreeNode:
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left, right;
+ *     public TreeNode(int val) {
+ *         this.val = val;
+ *         this.left = this.right = null;
+ *     }
+ * }
+ */
+
+public class Solution {
+    /**
+     * @param root: the root of binary tree
+     * @return: new root
+     */
+    public TreeNode upsideDownBinaryTree(TreeNode root) {
+        return traverse(root, null);
+    }
+    
+    private TreeNode traverse(TreeNode root, TreeNode parent) {
+        if(root == null) return null;
+        TreeNode tmp = root;
+        if(root.left != null) {
+            root = traverse(root.left, root);
+        }
+        tmp.left = parent != null ? parent.right : null;
+        tmp.right = parent;
+        return root;
+    }
+}
+```
+
+#### Complexity
+
+- Runtime complexity: $O(\log N)$ 
+- Space Complexity: $O(\log N)$ 
+
+<a href="#in-order-excercise">Back to excercises</a>
+
+
 
 
 
@@ -1000,6 +1181,51 @@ class Solution {
 
 
 
+
+
+<a name="222"></a>
+
+### 222. Count Complete Tree Nodes
+
+#### Brute Force
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null) return 0;
+        return 1 + countNodes(root.left) + countNodes(root.right);
+    }
+}
+```
+
+##### Complexity
+
+- Runtime Complexity: $O(N)$ 
+- Space Complexity: $O(\log N)$ 
+
+#### Optimized
+
+```java
+
+```
+
+
+
+<a href="#pre-order-excercise">Back to excercises</a>
+
+
+
+
+
 <a name="226"></a>
 
 ### 226. Invert Binary Tree
@@ -1031,6 +1257,8 @@ class Solution {
 - Space Complexity: $O(\log N)$ 
 
 <a href="#pre-order-excercise">Back to excercises</a>
+
+
 
 
 
@@ -1068,6 +1296,8 @@ class Solution {
 - Space Complexity: $O(\log N)$ 
 
 <a href="#pre-order-excercise">Back to excercises</a>
+
+
 
 
 
@@ -1125,7 +1355,6 @@ Ex 2: Search for 2 and 6, expect to return 5
     5 -- 5 --> 3
     1 -- null --> 3
     0 -- null --> 1
-    8 -- null --> 1
 {% endmermaid %}
 
 ```java
@@ -1279,6 +1508,8 @@ class Solution {
 
 
 
+
+
 <a name="270"></a>
 
 ### 270. Closest Binary Search Tree Value
@@ -1331,6 +1562,8 @@ public class Solution {
 
 
 
+
+
 <a name="298"></a>
 
 ### 298. Binary Tree Longest Consecutive Sequence
@@ -1379,6 +1612,10 @@ public class Solution {
 
 
 
+
+
+<a name="366"></a>
+
 ### 366. Find Leaves of Binary Tree
 
 ```java
@@ -1426,6 +1663,8 @@ public class Solution {
 - Space Complexity:  $O(\log n)$, worst case unbalanced tree $O(n)$
 
 <a href="#pre-order-excercise">Back to excercises</a>
+
+
 
 
 
