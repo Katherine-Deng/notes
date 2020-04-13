@@ -4,15 +4,19 @@ date: 2020-04-11 11:21:53
 tags:
 ---
 
+> We extend the concept of linked data structures to structure containing nodes with more than one self-referenced field. ... ... A traversal is a process that visits all the nodes in the tree. Since a tree is a nonlinear data structure, there is no unique traversal. [^2]
+
+<!-- more -->
+
 ## Types of Trees
 
 ### Binary Tree
 
-A *binary tree* is a tree data structure in which each node has at most two children.
+A *binary tree* is a tree data structure in which each node has at most two children.[^1]
 
 ### Binary Search Tree
 
-A *binary search tree* is a binary tree where each node is greater than all node in its left subtree and smaller than all node in its right subtree.
+A *binary search tree* is a binary tree where each node is greater than all node in its left subtree and smaller than all node in its right subtree. [^1]
 
 {% mermaid graph TD %}
 1((8)) --> 2((4))
@@ -25,9 +29,10 @@ A *binary search tree* is a binary tree where each node is greater than all node
 
 
 
+
 ### Complete Binary Tree
 
-A *complete binary tree* is a binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.
+A *complete binary tree* is a binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.[^1]
 
 {% mermaid graph TD %}
 1(( )) --> 2(( ))
@@ -49,7 +54,7 @@ A *complete binary tree* is a binary tree in which every level, except possibly 
 
 ### Full Binary Tree
 
-A *full binary tree* is a binary tree in which every node has either zero or two children. That is, no nodes have only one child.
+A *full binary tree* is a binary tree in which every node has either zero or two children. That is, no nodes have only one child.[^1]
 
 {% mermaid graph TD %}
 1(( )) --> 2(( ))
@@ -66,7 +71,7 @@ A *full binary tree* is a binary tree in which every node has either zero or two
 
 ### Perfect Binary Tree
 
-A *perfect binary tree* is a binary tree where all leaves are on the same level , and every parent has two children. A perfect binary tree of height $h$ has $2^{h+1} - 1$ nodes and $2^h$ leaf nodes. 
+A *perfect binary tree* is a binary tree where all leaves are on the same level , and every parent has two children. A perfect binary tree of height $h$ has $2^{h+1} - 1$ nodes and $2^h$ leaf nodes. [^1]
 
 NOTE: height for root is 0. 
 
@@ -192,10 +197,6 @@ void preOrderTraversal(Treenode node) {
 | [105](https://leetcode.com/problems/count-complete-tree-nodes/) | Construct Binary Tree from Preorder and Inorder Traversal    | Medium     | <a href="#105">Solution</a>                    |
 | **[116](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/)** | **Populating Next Right Pointers in Each Node**              | **Medium** | <a href="#116">Solution</a>                    |
 | **[117](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/)** | **Populating Next Right Pointers in Each Node II**           | **Medium** | <a href="#117">Solution</a>                    |
-|                                                              |                                                              |            |                                                |
-| [331](https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/) | Verify Preorder Serialization of a Binary Tree               | Medium     | <a href="#331">Solution</a>                    |
-| [255](https://www.lintcode.com/problem/verify-preorder-sequence-in-binary-search-tree/description) | ==Verify Preorder Sequence in Binary Search Tree==           | Medium     | <a href="#255">Solution</a>                    |
-| **[124](https://leetcode.com/problems/binary-tree-maximum-path-sum)** | **Binary Tree Maximum Path Sum**                             | **Hard**   | <a href="#124">Solution</a>                    |
 
 
 
@@ -222,14 +223,12 @@ void inOrderTraversal(Treenode node) {
 | #                                                            | Title                                                        | Level      | Solution                    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- | --------------------------- |
 | [94](https://leetcode.com/problems/binary-tree-inorder-traversal/) | Binary Tree In-order Traversal (recursive + iterative solution) | Medium     | <a href="#94">Solution</a>  |
-| **[173](https://leetcode.com/problems/binary-search-tree-iterator/)** | **Binary Search Tree Iterator**                              | **Medium** | <a href="#173">Solution</a> |
 | **[230](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)** | **Kth Smallest Element in a BST**                            | **Medium** | <a href="#230">Solution</a> |
 | **[285](https://www.lintcode.com/problem/inorder-successor-in-bst/description)** | **In-order successor in BST**                                | **Medium** | <a href="#285">Solution</a> |
-| [272](https://www.lintcode.com/problem/closest-binary-search-tree-value-ii/description) | Closest Binary Search Tree Value II                          | Hard       | <a href="#272">Solution</a> |
-| [99](https://leetcode.com/problems/recover-binary-search-tree/) | Recover Binary Search Tree                                   | Hard       | <a href="#99">Solution</a>  |
-| **[314](https://www.lintcode.com/problem/binary-tree-vertical-order-traversal/description)** | **Binary Tree Vertical Order Traversal**                     | **Medium** | <a href="#314">Solution</a> |
-| [333](https://www.cnblogs.com/grandyang/p/5188938.html)      | Largest BST Subtree                                          | Medium     | <a href="#333">Solution</a> |
-| [156](https://www.lintcode.com/problem/binary-tree-upside-down/description) | Binary Tree Upside                                           | Medium     | <a href="#156">Solution</a> |
+| **[173](https://leetcode.com/problems/binary-search-tree-iterator/)** | **Binary Search Tree Iterator**                              | **Medium** | <a href="#173">Solution</a> |
+| [156](https://www.lintcode.com/problem/binary-tree-upside-down/description) | Binary Tree Upside Down                                      | Medium     | <a href="#156">Solution</a> |
+| [99](https://leetcode.com/problems/recover-binary-search-tree/) | ==Inorder Recover Binary Search Tree==                       | Hard       | <a href="#99">Solution</a>  |
+| [272](https://www.lintcode.com/problem/closest-binary-search-tree-value-ii/description) | ==Closest Binary Search Tree Value II==                      | Hard       | <a href="#272">Solution</a> |
 
 
 
@@ -259,8 +258,8 @@ void postOrderTraversal(Treenode node) {
 | **[110](https://leetcode.com/problems/balanced-binary-tree)** | **Balanced Binary Tree**                                     | **Easy**   | <a href="#110">Solution</a> |
 | [250](https://www.lintcode.com/problem/count-univalue-subtrees/description) | Count Univalue Subtrees                                      | Medium     | <a href="#250">Solution</a> |
 | **[236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)** | **Lowest Common Ancestor of a Binary Tree**                  | **Medium** | <a href="#236">Solution</a> |
-|                                                              |                                                              |            |                             |
-|                                                              |                                                              |            |                             |
+| **[124](https://leetcode.com/problems/binary-tree-maximum-path-sum)** | **Binary Tree Maximum Path Sum**                             | **Hard**   | <a href="#124">Solution</a> |
+| [333](https://www.cnblogs.com/grandyang/p/5188938.html)      | ==Largest BST Subtree==                                      | Medium     | <a href="#333">Solution</a> |
 
 
 
@@ -283,21 +282,26 @@ void levelOrderTraversal(Treenode node, int level) {
 
 #### Exercises
 
-| #                                                            | Title                                     | Level    | Solution                    |
-| ------------------------------------------------------------ | ----------------------------------------- | -------- | --------------------------- |
-| [102](https://leetcode.com/problems/binary-tree-level-order-traversal/) | Binary Tree Level Order Traversal         | Easy     | <a href="#102">Solution</a> |
-| [107](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/) | Binary Tree Level Order Traversal II      | Easy     | <a href="#107">Solution</a> |
-| [103](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/) | Binary Tree Zigzag Level Order Traversal  | Medium   | <a href="#103">Solution</a> |
-| **[297](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)** | **Serialize and Deserialize Binary Tree** | **Hard** | <a href="#297">Solution</a> |
+| #                                                            | Title                                         | Level      | Solution                    |
+| ------------------------------------------------------------ | --------------------------------------------- | ---------- | --------------------------- |
+| [102](https://leetcode.com/problems/binary-tree-level-order-traversal/) | Binary Tree Level Order Traversal             | Easy       | <a href="#102">Solution</a> |
+| [107](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/) | Binary Tree Level Order Traversal II          | Easy       | <a href="#107">Solution</a> |
+| [103](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/) | Binary Tree Zigzag Level Order Traversal      | Medium     | <a href="#103">Solution</a> |
+| **[314](https://www.lintcode.com/problem/binary-tree-vertical-order-traversal/description)** | ==**Binary Tree Vertical Order Traversal**==  | **Medium** | <a href="#314">Solution</a> |
+| **[297](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)** | ==**Serialize and Deserialize Binary Tree**== | **Hard**   | <a href="#297">Solution</a> |
 
 
+
+<a name="others"></a>
 
 ### Others
 
-| #                                                            | Title                          | Tag                 | Level      | Solution                   |
-| ------------------------------------------------------------ | ------------------------------ | ------------------- | ---------- | -------------------------- |
-| **[96](https://leetcode.com/problems/unique-binary-search-trees/)** | **Unique Binary Search Trees** | Dynamic Programming | **Medium** | <a href="#96">Solution</a> |
-| [95](https://leetcode.com/problems/unique-binary-search-trees-ii/) | Unique Binary Search Trees II  |                     | Medium     | <a href="#95">Solution</a> |
+| #                                                            | Title                                          | Tag                 | Level      | Solution                    |
+| ------------------------------------------------------------ | ---------------------------------------------- | ------------------- | ---------- | --------------------------- |
+| **[96](https://leetcode.com/problems/unique-binary-search-trees/)** | **Unique Binary Search Trees**                 | Dynamic Programming | **Medium** | <a href="#96">Solution</a>  |
+| [95](https://leetcode.com/problems/unique-binary-search-trees-ii/) | Unique Binary Search Trees II                  |                     | Medium     | <a href="#95">Solution</a>  |
+| [331](https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/) | Verify Preorder Serialization of a Binary Tree | Stack, Graph        | Medium     | <a href="#331">Solution</a> |
+| [255](https://www.lintcode.com/problem/verify-preorder-sequence-in-binary-search-tree/description) | Verify Preorder Sequence in Binary Search Tree | Monotonic Stack     | Medium     | <a href="#255">Solution</a> |
 
 
 
@@ -418,6 +422,8 @@ class Solution {
 }
 ```
 
+<a href="#others">Back to excercises</a>
+
 
 
 
@@ -444,12 +450,12 @@ class Solution {
 }
 ```
 
-##### 复杂度分析
+##### Complexity
 
-- 时间复杂度：$O(N)$ 
+- Runtime Complexity：$O(N)$ 
 - 空间复杂度：$O(N)$ 
 
-
+<a href="#others">Back to excercises</a>
 
 
 
@@ -585,6 +591,13 @@ class Solution {
 }
 ```
 
+#### Complexity
+
+- Runtime Complexity: $O(N)$ 
+- Space Complexity: $O(\log N)$
+
+<a href="#level-order-excercise">Back to excercises</a>
+
 
 
 
@@ -609,22 +622,28 @@ class Solution {
         traverse(root, 0);
         return results;
     }
-    
-    private void traverse(TreeNode root, int i) {
+    private void traverse(TreeNode root, int level) {
         if(root == null) return;
-        if(results.size() <= i) {
-            results.add(new LinkedList());
+        if(results.size() <= level) {
+            results.add(new LinkedList<Integer>());
         }
-        if(i % 2 == 0) {
-            results.get(i).add(root.val);
+        if(level % 2 == 0) {
+            results.get(level).add(root.val);
         } else {
-            results.get(i).add(0, root.val);
+            results.get(level).add(0, root.val);
         }
-        traverse(root.left, i + 1);
-        traverse(root.right, i + 1);
+        traverse(root.left, level + 1);
+        traverse(root.right, level + 1);
     }
 }
 ```
+
+##### Complexity
+
+- Runtime Complexity: $O(N)$ 
+- Space Complexity: $O(\log N)$ if the tree is balance, worst case is $O(N)$.
+
+<a href="#level-order-excercise">Back to excercises</a>
 
 
 
@@ -671,6 +690,53 @@ class Solution {
 
 
 
+<a name="105"></a>
+
+### 105. Construct Binary Tree From Preorder and Inorder Traversal
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if(preorder.length == 0) return null;
+        return helper(preorder, inorder, 0, 0, preorder.length, preorder.length);
+    }
+    
+    private TreeNode helper(int[] preorder, int[] inorder, int i, int j, int endi, int endj) {
+        if(i == endi && j == endj) return null;
+        TreeNode root = new TreeNode(preorder[i]);
+        int k = 0;
+        while(root.val != inorder[j+k]) k++;
+        if(k == 0) {
+            root.left = null;
+        } else {
+            root.left = helper(preorder, inorder, i + 1, j, i + k + 1 ,j + k);
+        }
+        root.right = helper(preorder, inorder, i + k + 1, j + k + 1, endi ,endj);
+        return root;
+    }
+}
+```
+
+##### Complexity
+
+- Runtime Complexity: $O(N)$ 
+- Space Complexity: $O(\log N)$ if the tree is balance, worst case is $O(N)$.
+
+<a href="#pre-order-excercise">Back to excercises</a>
+
+
+
+
+
 <a name="107"></a>
 
 ###  107. Binary Tree Level Order Traversal II
@@ -686,23 +752,30 @@ class Solution {
  * }
  */
 class Solution {
-    List<List<Integer>> results = new ArrayList<List<Integer>>();
+    List<List<Integer>> results = new LinkedList<List<Integer>>();
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         traverse(root, 0);
         return results;
     }
-    
-    private void traverse(TreeNode root, int i) {
+    private void traverse(TreeNode root, int level) {
         if(root == null) return;
-        if(results.size() <= i) {
-            results.add(0, new ArrayList());
+        if(results.size() <= level) {
+            results.add(0, new LinkedList<Integer>());
         }
-        results.get(results.size() - 1 - i).add(root.val);
-        traverse(root.left, i + 1);
-        traverse(root.right, i + 1);
+        int index = results.size() - level - 1;
+        results.get(index).add(root.val);
+        traverse(root.left, level + 1);
+        traverse(root.right, level + 1);
     }
 }
 ```
+
+#### Complexity
+
+- Runtime Complexity: $O(N)$ 
+- Space Complexity: $O(\log N)$ 
+
+<a href="#level-order-excercise">Back to excercises</a>
 
 
 
@@ -799,21 +872,7 @@ class Solution {
 
 ##### Complexity
 
-- Runtime Complexity: $O(N \log N)$ 
-
-  -  Suppose our linked list consists of $N$ elements. For every list we pass to our recursive function, we have to calculate the middle element for that list. For a list of size $N$, it takes $N / 2$ steps to find the middle element i.e. $O(N)$ to find the mid. We do this for **every** level of the search tree. So the total runtime is $O(N\log N)$.
-
-    - Let's look at the number of operations that we have to perform on each of the halves of the linked list. As we mentioned earlier, it takes $N/2$ steps to find the middle of a linked list with $N$ elements. After finding the middle element, we are left with two halves of size $N / 2$ each. Then, we find the middle element for `both` of these halves and it would take a total of $2 \times N / 4$ steps for that. And similarly for the smaller sub-lists that keep forming recursively. This would give us the following series of operations for a list of size $N$.
-
-    $$\begin{aligned}{c}
-    \frac{N}{2} + 2 \cdot \frac{N}{4} + 4 \cdot \frac{N}{8} + 8 \cdot \frac{N}{16} \; \ldots 
-    \end{aligned}$$
-
-    - Essentially, this is done $\log N$ times since we split the linked list in half every time. Hence, the above equation becomes:
-
-    $$\begin{aligned}
-    &\sum_{i = 1}^{\log N} 2^{i - 1} \cdot \frac{N}{2^i} \\ = \; &\sum_{i = 1}^{\log N}\frac{N}{2} \\ = \; &\frac{N}{2} \; \log N \\ = \; &O(N\log N) 
-    \end{aligned}$$
+- Runtime Complexity: $O(N \log N)$. For details of how runtime is calculated, please check out [here](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/solution/).
 
 - Space Complexity: $O(\log N)$ if the tree is balance, worst case is $O(N)$.
 
@@ -1045,6 +1104,182 @@ class Solution {
 
 
 
+<a name="116"></a>
+
+### 116. Populating Next Right Pointers in Each Node
+
+```java
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+    public Node next;
+
+    public Node() {}
+    
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, Node _left, Node _right, Node _next) {
+        val = _val;
+        left = _left;
+        right = _right;
+        next = _next;
+    }
+};
+*/
+
+class Solution {
+    public Node connect(Node root) {
+        traverse(root);
+        return root;
+    }
+    
+    private void traverse(Node root) {
+        if(root == null) return;
+        Node next = root.next;
+        if(root.left != null) {
+            root.left.next = root.right;
+            if(next != null) {
+                root.right.next = next.left;
+            }
+        }
+        traverse(root.left);
+        traverse(root.right);
+    }
+}
+```
+
+#### Complexity
+
+- Runtime Complexity: $O(N)$ 
+- Space Complexity: $O(\log N)$ 
+
+<a href="#pre-order-excercise">Back to excercises</a>
+
+
+
+
+
+<a name="117"></a>
+
+### 117. Populating Next Right Pointers in Each Node II
+
+```java
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+    public Node next;
+
+    public Node() {}
+    
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, Node _left, Node _right, Node _next) {
+        val = _val;
+        left = _left;
+        right = _right;
+        next = _next;
+    }
+};
+*/
+
+class Solution {
+    public Node connect(Node root) {
+        traverse(root);
+        return root;
+    }
+    
+    private void traverse(Node root) {
+        if(root == null) return;
+        Node next = null, curNode = root.next;
+        while(curNode != null && next == null) {
+            if(curNode.left != null) {
+                next = curNode.left;
+            } else {
+                next = curNode.right;
+            }
+            curNode = curNode.next;
+        }
+        if(root.right != null) {
+            root.right.next = next;
+        }
+        if(root.left != null) {
+            root.left.next = root.right == null ? next : root.right;
+        }
+        traverse(root.right);
+        traverse(root.left);
+    }
+}
+```
+
+#### Complexity:
+
+- Runtime Complexity: $O(N)$ 
+- Space Complexity: $O(\log N)$ 
+
+<a href="#pre-order-excercise">Back to excercises</a>
+
+
+
+
+
+<a name="124"></a>
+
+### 124. Binary Tree Maximum Path Sum
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    int maxSum = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        if(root == null) return 0;
+        traverse(root);
+        return maxSum;
+    }
+    
+    private int traverse(TreeNode root) {
+        if(root == null) return 0;
+        if(root.left ==  null && root.right == null) {
+            maxSum = Math.max(root.val, maxSum);
+            return root.val;
+        }
+        int sumL = traverse(root.left);
+        int sumR = traverse(root.right);
+        int max = Math.max(sumL + sumR + root.val, Math.max(Math.max(sumL, sumR) + root.val, root.val));
+        maxSum = Math.max(max, maxSum);
+        return Math.max(Math.max(sumL, sumR) + root.val, root.val); 
+    }
+}
+```
+
+#### Complexity
+
+- Runtime Complexity: $O(N)$
+- Space Complexity: $O(\log N)$
+
+<a href="#post-order-excercise">Back to excercises</a>
+
+
+
+
+
 <a name="129"></a>
 
 ### 129. Sum Root to Leaf Numbers
@@ -1081,6 +1316,50 @@ class Solution {
 #### Complexity
 
 - Runtime complexity: $O(N)$
+- Space Complexity: $O(\log N)$ 
+
+<a href="#pre-order-excercise">Back to excercises</a>
+
+
+
+
+
+<a name="144"></a>
+
+### 144. Binary Tree Preorder Traversal
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new LinkedList<Integer>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode node = root;
+        while(node != null || !stack.isEmpty()) {
+            if(node == null) {
+                node = stack.pop();
+            } else {
+                result.add(node.val);
+                if(node.right != null) stack.add(node.right);
+                node = node.left;
+            }
+        }
+        return result;
+    }
+}
+```
+
+#### Complexity
+
+- Runtime Complexity: $O(N)$
 - Space Complexity: $O(\log N)$ 
 
 <a href="#pre-order-excercise">Back to excercises</a>
@@ -1134,6 +1413,66 @@ public class Solution {
 
 - Runtime complexity: $O(\log N)$ 
 - Space Complexity: $O(\log N)$ 
+
+<a href="#in-order-excercise">Back to excercises</a>
+
+
+
+
+
+<a name="173"></a>
+
+### 173. Binary Search Tree Iterator
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class BSTIterator {
+    Stack<TreeNode> stack = new Stack<TreeNode>();
+
+    public BSTIterator(TreeNode root) {
+        while(root!= null) {
+            stack.push(root);
+            root = root.left;
+        }
+    }
+    
+    /** @return the next smallest number */
+    public int next() {
+        TreeNode result = stack.pop();
+        TreeNode root = result.right;
+        while(root!= null) {
+            stack.push(root);
+            root = root.left;
+        }
+        return result.val;
+    }
+    
+    /** @return whether we have a next smallest number */
+    public boolean hasNext() {
+        return !stack.isEmpty();
+    }
+}
+
+/**
+ * Your BSTIterator object will be instantiated and called as such:
+ * BSTIterator obj = new BSTIterator(root);
+ * int param_1 = obj.next();
+ * boolean param_2 = obj.hasNext();
+ */
+```
+
+#### Complexity
+
+- Runtime Complexity: $O(1)$ on average for `next` and `hasNext`, worst case is O(N) for `next`. Please click [here](https://leetcode.com/problems/binary-search-tree-iterator/solution/) to check out for solution.
+- Space Complexity: $O(\log N)$
 
 <a href="#in-order-excercise">Back to excercises</a>
 
@@ -1215,10 +1554,39 @@ class Solution {
 #### Optimized
 
 ```java
-
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null) return 0;
+        int heightL = 0, heightR = 0;
+        TreeNode curNode = root;
+        while(curNode != null) {
+            heightL++;
+            curNode = curNode.left;
+        }
+        curNode = root;
+        while(curNode != null) {
+            heightR++;
+            curNode = curNode.right;
+        }
+        if(heightL == heightR) return (int)Math.pow(2, heightR) - 1;
+        return 1 + countNodes(root.left) + countNodes(root.right);
+    }
+}
 ```
 
+##### Complexity
 
+- Runtime Complexity: $O(\log N \times \log N)$. For detail of how runtime is calculated, please checkout [here](https://labuladong.gitbook.io/algo/shu-ju-jie-gou-xi-lie/wan-quan-er-cha-shu-jie-dian-shu).
+- Space Complexity: $O(\log N)$
 
 <a href="#pre-order-excercise">Back to excercises</a>
 
@@ -1301,6 +1669,51 @@ class Solution {
 
 
 
+<a name="230"></a>
+
+###  230. Kth Smallest Element in a BST
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    int result = 0, cnt = 0;
+    public int kthSmallest(TreeNode root, int k) {
+        traverse(root, k);
+        return result;
+    }
+    private void traverse(TreeNode root, int k) {
+        if(root == null) return;
+        traverse(root.left, k);
+        cnt++;
+        if(cnt == k) {
+            result = root.val;
+        }
+        traverse(root.right, k);
+    }
+}
+```
+
+#### Complexity
+
+- Runtime Complexity: $O(N)$ 
+- Space Complexity: $O(\log N)$
+
+<a href="#in-order-excercise">Back to excercises</a>
+
+
+
+
+
+
+
 <a name="236"></a>
 
 ### 236. Lowest Common Ancestor of a Binary Tree
@@ -1337,6 +1750,8 @@ Ex 1: Search for 7 and 4, expect to return 2
     8 -- null --> 1
 {% endmermaid %}
 
+
+
 Ex 2: Search for 2 and 6, expect to return 5
 
 {% mermaid graph TD %}
@@ -1355,6 +1770,7 @@ Ex 2: Search for 2 and 6, expect to return 5
     5 -- 5 --> 3
     1 -- null --> 3
     0 -- null --> 1
+    8 -- null --> 1
 {% endmermaid %}
 
 ```java
@@ -1379,6 +1795,15 @@ class Solution {
     }
 }
 ```
+
+#### Complexity
+
+- Runtime Complexity: $O(N)$
+- Space Complexity: $O(\log N)$
+
+<a href="#post-order-excercise">Back to excercises</a>
+
+
 
 
 
@@ -1450,10 +1875,84 @@ public class Solution {
 
 #### Complexity
 
-- Running Time Complexity: $O(n)$
+- Runtime Complexity: $O(n)$
 - Space Complexity:  $O(\log n)$, worst case unbalanced tree $O(n)$
 
 <a href="#post-order-excercise">Back to excercises</a>
+
+
+
+
+
+<a name="255"></a>
+
+### 255. Verify Preorder Sequence in Binary Search
+
+#### Recursive Solution
+
+```java
+public class Solution {
+    int index = 0;
+    /**
+     * @param preorder: List[int]
+     * @return: return a boolean
+     */
+    public boolean verifyPreorder(int[] preorder) {
+        return traverse(preorder, null, null);
+    }
+    
+    private boolean traverse(int[] preorder, Integer lo, Integer hi){
+        if(preorder.length <= index) return true;
+        
+        if(lo != null && preorder[index] <= lo) return false;
+        if(hi != null && preorder[index] >= hi) return false;
+        
+        index++;
+        int parent = index - 1;
+        boolean resultL = traverse(preorder, lo, preorder[parent]);
+        boolean resultR = traverse(preorder, preorder[parent], hi);
+        
+        return resultL || resultR;
+    }
+}
+```
+
+##### Complexity
+
+- Runtime Complexity: $O(N)$
+- Space Complexity: $O(\log N)$, worst case $O(N)$ (stack overflow)
+
+#### Iterative Solution
+
+```java
+public class Solution {
+    /**
+     * @param preorder: List[int]
+     * @return: return a boolean
+     */
+    public boolean verifyPreorder(int[] preorder) {
+        Integer lo = null;
+        int N = preorder.length;
+        Stack<Integer> stack = new Stack<Integer>(); //root ---> left path 
+        for(int i = 0; i < N; ++i) {
+            int node = preorder[i];
+            if(lo != null && node <= lo) return false;
+            while(!stack.isEmpty() && stack.peek() < node) {
+                lo = stack.pop();
+            }
+            stack.push(node);
+        }
+        return true;
+    }
+}
+```
+
+##### Complexity
+
+- Runtime Complexity: $O(N)$
+- Space Complexity: $O(N)$
+
+<a href="#others">Back to excercises</a>
 
 
 
@@ -1501,7 +2000,7 @@ class Solution {
 
 #### Complexity
 
-- Running Time Complexity: $O(n)$
+- Runtime Complexity: $O(n)$
 - Space Complexity:  $O(\log n)$, worst case unbalanced tree $O(n)$
 
 <a href="#pre-order-excercise">Back to excercises</a>
@@ -1555,10 +2054,58 @@ public class Solution {
 
 #### Complexity
 
-- Running Time Complexity: $O(\log n)$ , worst case unbalanced tree $O(n)$ 
+- Runtime Complexity: $O(\log n)$ , worst case unbalanced tree $O(n)$ 
 - Space Complexity:  $O(\log n)$, worst case unbalanced tree $O(n)$
 
 <a href="#pre-order-excercise">Back to excercises</a>
+
+
+
+
+
+<a name="285"></a>
+
+### 285. Inorder Successor in BST
+
+- If current node is less or equal to target node, go directly to right subtree.
+- If current node is larger than target node, save the result from left subtree. If the result from left subtree is null, then return the current node.
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+
+public class Solution {
+    /*
+     * @param root: The root of the BST.
+     * @param p: You need find the successor node of p.
+     * @return: Successor of p.
+     */
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        if(root == null) return null;
+        if(root.val <= p.val) {
+            return inorderSuccessor(root.right, p);
+        } else {
+            TreeNode node = inorderSuccessor(root.left, p);
+            return node == null ? root : node;
+        }
+    }
+}
+```
+
+#### Complexity
+
+- Runtime Complexity: $O(\log N)$
+- Space Complexity: $O(\log N)$
+
+<a href="#in-order-excercise">Back to excercises</a>
 
 
 
@@ -1605,8 +2152,122 @@ public class Solution {
 
 #### Complexity
 
-- Running Time Complexity: $O(n)$
+- Runtime Complexity: $O(n)$
 - Space Complexity:  $O(\log n)$, worst case unbalanced tree $O(n)$
+
+<a href="#pre-order-excercise">Back to excercises</a>
+
+
+
+
+
+<a name="331"></a>
+
+### 331. Verify Preorder Serialization of a Binary Tree
+
+#### Stack
+
+```java
+class Solution {
+    public boolean isValidSerialization(String preorder) {
+        String[] serialization = preorder.split(",");
+        if(serialization.length == 1 && serialization[0].equals("#")) {
+            return true;
+        }
+        Stack<Integer> stack = new Stack<Integer>();
+        for(int i = 0; i<serialization.length; ++i) {
+            String val = serialization[i];
+            if(val.equals("#")) {
+                if(stack.isEmpty()) return false;
+                int preCnt = stack.pop();
+                stack.add(preCnt + 1);
+                while (!stack.isEmpty() && stack.peek() == 2) {
+                    stack.pop();
+                    if(!stack.isEmpty()) {
+                        preCnt = stack.pop();
+                        stack.add(preCnt + 1);
+                    }
+                }
+            } else {
+                if(i != 0 && stack.isEmpty()) return false;
+                stack.push(0);
+            }
+        }
+        return stack.isEmpty();
+    }
+}          
+```
+
+##### Complexity:
+
+- Runtime Complexity: $O(N)$
+- Space Complexity: $O(N)$ 
+
+#### Difference of in&out degree
+
+For any graph, total of the in degree equals the total of the out degree. For each node from a binary tree, they have 2 out degree and 1 in degree. Exception exists for root and leaf node. Root node only have 2 out degree while leaf only have 1 in degree.
+
+```java
+class Solution {
+    public boolean isValidSerialization(String preorder) {
+        String[] serialization = preorder.split(",");
+        int diff = 1; // set to 1 so that in+out degree for root is 2
+        for(String s: serialization) {
+            diff -= 1;
+            if(diff < 0) return false;
+            if(!s.equals("#")) diff += 2;
+        }
+        return diff == 0;
+    }
+}      
+```
+
+##### Complexity:
+
+- Runtime Complexity: $O(N)$
+- Space Complexity: $O(1)$ 
+
+<a href="#others">Back to excercises</a>
+
+
+
+
+
+<a name="337"></a>
+
+### 337. House Robber II
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int rob(TreeNode root) {
+        if(root == null) return 0;
+        int robL = rob(root.left), robR = rob(root.right), nRobL = 0, nRobR = 0;
+        if(root.left != null) {
+            TreeNode node = root.left;
+            nRobL = rob(node.left) + rob(node.right);
+        } 
+        if(root.right != null) {
+            TreeNode node = root.right;
+            nRobR = rob(node.left) + rob(node.right);
+        }
+        return Math.max(robL + robR, root.val + nRobL + nRobR);
+    }
+}
+```
+
+#### Complexity
+
+- Runtime Complexity: $O(?)$ 
+- Space Complexity: $O(?)$
 
 <a href="#pre-order-excercise">Back to excercises</a>
 
@@ -1659,7 +2320,7 @@ public class Solution {
 
 #### Complexity
 
-- Running Time Complexity: $O(n)$ 
+- Runtime Complexity: $O(n)$ 
 - Space Complexity:  $O(\log n)$, worst case unbalanced tree $O(n)$
 
 <a href="#pre-order-excercise">Back to excercises</a>
@@ -1668,40 +2329,10 @@ public class Solution {
 
 
 
-<a name="337"></a>
 
-### 337. House Robber II
 
-```java
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public int rob(TreeNode root) {
-        if(root == null) return 0;
-        int robL = rob(root.left), robR = rob(root.right), nRobL = 0, nRobR = 0;
-        if(root.left != null) {
-            TreeNode node = root.left;
-            nRobL = rob(node.left) + rob(node.right);
-        } 
-        if(root.right != null) {
-            TreeNode node = root.right;
-            nRobR = rob(node.left) + rob(node.right);
-        }
-        return Math.max(robL + robR, root.val + nRobL + nRobR);
-    }
-}
-```
+## References
 
-#### Complexity
+[^1]: https://en.wikipedia.org/wiki/Binary_tree
+[^2]: https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html
 
-- Runtime Complexity: $$ 
-- Space Complexity: $$
-
-<a href="#pre-order-excercise">Back to excercises</a>
