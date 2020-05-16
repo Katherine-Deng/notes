@@ -4,23 +4,31 @@ date: 2020-05-01 09:21:53
 tags:
 ---
 
-
-> A *decision tree* represents a function that takes a vector of attribute values as input and returns a "decision" (a single output value). [^1]
-
-> Solving a backtracking problem is actually a traversal process of a decision tree. [^2]
+> Solving a backtracking problem is actually a traversal process of a decision tree. [^1]
 
 <!-- more -->
 
 </br>
 
-## Terminology
+## Backtracking Algorithm vs DFS
 
 | Terminology      | Explanation                                                  |
 | ---------------- | ------------------------------------------------------------ |
-| path             | A series of selection have been made so far                  |
-| selection list   | A list of choices you may choose at the moment               |
+| decision tree    | A tree that represents a function that takes a vector of attribute values as input and returns a "decision" (a single output value) |
 | ending condition | The condition that ends the growth of decision tree          |
+| path             | A series of selection have been made so far                  |
 | pruning          | The elimination of a large group of possibilities in one step |
+| selection list   | A list of choices you may choose at the moment               |
+
+</br>
+
+|                                 | Backtracking Algorithm                                       | DFS                                                          |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Definition                      | *Backtracking algorithm* is an algorithm design technique that uses pruning while traversing paths of a decision tree. | *Depth-First Search* is a generalization of preorder traversal which can be applied to graph. |
+| Data Structure for Search Space | Implicit Tree. They are generally large, but pruning allows us to have significant savings over a brute-force exhaustive search. Since the tree is generated dynamically during computation, we need to consider ending condition as well as backtrack strategy together with selection list. | Tree/Graph                                                   |
+| Use of memory                   | If repeated calculation are found, then we could try to see if we could solve it bottom-up(dynamic programming) or use some extra memo to record those value. | Record visited node to avoid loop traverse. Record starting time and finishing time to identify the relationship between two nodes. |
+
+</br>
 
 ```java
 results = []
@@ -39,35 +47,59 @@ void backtrack(path, selectionList) {
 
 </br>
 
+```java
+results = []
+void backtrack(path, selectionList, curIndex) {
+	if(/* ending condition */) {
+        results.add(path);
+        return;
+    }
+    
+    // Generate path without choosing current index 
+    backtrack(path, selectionList, curIndex + 1);
+    
+    // Generate path with current index been chosen
+    path.add(selectionList[curIndex]);  // select current choice
+    backtrack(path, selectionList, curIndex + 1);
+    path.remove(path.size() - 1)	    // undo the selection
+    }
+}
+```
+
+
+
 ## Exercises
 
 <a name="excercises"></a>
 
 | #    | Title                                 | Level  | Solution                    |
 | ---- | ------------------------------------- | ------ | --------------------------- |
-| 46   | Permutations                          | Medium | <a href="#46">Solution</a>  |
-| 47   | Permutations II                       | Medium | <a href="#47">Solution</a>  |
-| 60   | Permutation Sequence                  | Medium | <a href="#60">Solution</a>  |
 | 78   | Subsets                               | Medium | <a href="#78">Solution</a>  |
 | 90   | Subsets II                            | Medium | <a href="#90">Solution</a>  |
-| 51   | N-Queens                              | Hard   | <a href="#51">Solution</a>  |
-| 52   | N-Queens II                           | Hard   | <a href="#52">Solution</a>  |
 | 77   | Combinations                          | Medium | <a href="#77">Solution</a>  |
 | 39   | Combination Sum                       | Medium | <a href="#39">Solution</a>  |
 | 40   | Combination Sum II                    | Medium | <a href="#40">Solution</a>  |
-| 254  | Factor Combinations                   | Medium | <a href="#254">Solution</a> |
+| 216  | Combination Sum III                   | Medium | <a href="#216">Solution</a> |
+| 46   | Permutations                          | Medium | <a href="#46">Solution</a>  |
+| 47   | Permutations II                       | Medium | <a href="#47">Solution</a>  |
+| 17   | Letter Combinations of a Phone Number | Medium | <a href="#17">Solution</a>  |
+| 22   | Generate Parentheses                  | Medium | <a href="#22">Solution</a>  |
 | 79   | Word Search                           | Medium | <a href="#79">Solution</a>  |
 | 93   | Restore IP Addresses                  | Medium | <a href="#93">Solution</a>  |
-| 22   | Generate Parentheses                  | Medium | <a href="#22">Solution</a>  |
-| 17   | Letter Combinations of a Phone Number | Medium | <a href="#17">Solution</a>  |
 | 131  | Palindrome Partitioning               | Medium | <a href="#131">Solution</a> |
-| 306  | **Additive Number**                   | Medium | <a href="#306">Solution</a> |
-| 320  | **Generalized Abbreviation**          | Medium | <a href="#320">Solution</a> |
+| 254  | Factor Combinations                   | Medium | <a href="#254">Solution</a> |
+| 306  | Additive Number                       | Medium | <a href="#306">Solution</a> |
+| 320  | Generalized Abbreviation              | Medium | <a href="#320">Solution</a> |
+| 351  | Android Unlock Patterns               | Medium | <a href="#351">Solution</a> |
 | 37   | Sudoku Solver                         | Hard   | <a href="#37">Solution</a>  |
+| 51   | N-Queens                              | Hard   | <a href="#51">Solution</a>  |
+| 52   | N-Queens II                           | Hard   | <a href="#52">Solution</a>  |
 | 291  | Word Pattern II                       | Hard   | <a href="#291">Solution</a> |
 | 140  | Word Break II                         | Hard   | <a href="#140">Solution</a> |
 | 10   | Regular Expression Matching           | Hard   | <a href="#10">Solution</a>  |
 | 44   | Wildcard Matching                     | Hard   | <a href="#44">Solution</a>  |
+| 301  | Remove Invalid Parentheses            | Hard   |                             |
+| 282  | Expression Add Operations             | Hard   |                             |
 
 </br>
 
@@ -78,36 +110,41 @@ void backtrack(path, selectionList) {
 ### 17. Letter Combinations of a Phone Number
 
 ```java
-class Solution {
-    List<String> results = new LinkedList<String>();
-    Map<Character, List<Character>> map = new HashMap<Character, List<Character>>();
-    String str;
-    public List<String> letterCombinations(String digits) {
-        int c = 0;
-        for(int i = 2; i<=9; ++i) {
-            List<Character> tmp = new LinkedList<Character>();
-            int letters = i == 7 || i == 9 ? 4 : 3;
-            for(int j = 0; j < letters; ++j, ++c) {
-                tmp.add((char)('a' + c));
-            }
-            map.put((char)('2' + i - 2), tmp);
+public class Solution {
+    public ArrayList<String> letterCombinations(String digits) {
+        ArrayList<String> result = new ArrayList<String>();
+
+        if (digits == null || digits.equals("")) {
+            return result;
         }
-        str = digits;
-        if(str.length() == 0) return results;
-        backtrack(new StringBuilder(), 0);
-        return results;
+
+        Map<Character, char[]> map = new HashMap<Character, char[]>();
+        map.put('2', new char[] { 'a', 'b', 'c' });
+        map.put('3', new char[] { 'd', 'e', 'f' });
+        map.put('4', new char[] { 'g', 'h', 'i' });
+        map.put('5', new char[] { 'j', 'k', 'l' });
+        map.put('6', new char[] { 'm', 'n', 'o' });
+        map.put('7', new char[] { 'p', 'q', 'r', 's' });
+        map.put('8', new char[] { 't', 'u', 'v'});
+        map.put('9', new char[] { 'w', 'x', 'y', 'z' });
+
+        StringBuilder sb = new StringBuilder();
+        helper(map, digits, sb, result);
+
+        return result;
     }
-    
-    private void backtrack(StringBuilder s, int pos) {
-        if(pos == str.length()) {
-            results.add(s.toString());
+
+    private void helper(Map<Character, char[]> map, String digits, 
+        StringBuilder sb, ArrayList<String> result) {
+        if (sb.length() == digits.length()) {
+            result.add(sb.toString());
             return;
         }
-        List<Character> choices = map.get(str.charAt(pos));
-        for(int i = 0; i<choices.size(); ++i) {
-            s.append(choices.get(i));
-            backtrack(s, pos+1);
-            s.deleteCharAt(s.length() - 1);
+
+        for (char c : map.get(digits.charAt(sb.length()))) {
+            sb.append(c);
+            helper(map, digits, sb, result);
+            sb.deleteCharAt(sb.length() - 1);
         }
     }
 }
@@ -322,16 +359,17 @@ class Solution {
     }
     
     private void backtrack(List<Integer> choices, List<Integer> permutation) {
-        if(choices.size() == 0) {
+        if(permutation.size() == choices.size()) {
             results.add(new LinkedList<Integer>(permutation));
             return;
         }
         for(int i = 0; i<choices.size(); ++i) {
             int choice = choices.get(i);
+            if(permutation.contains(choice)) {
+                continue;
+            }
             permutation.add(choice);
-            choices.remove(i);
             backtrack(choices, permutation);
-            choices.add(i, choice);
             permutation.remove(permutation.size() - 1);
         }
     }
@@ -486,101 +524,6 @@ class Solution {
 
 </br>
 
-<a name="60"></a>
-
-### 60. Permutation Sequence
-
-#### Backtracking Algorithm
-
-```java
-class Solution {
-    int cnt = 0;
-    String result = "";
-    public String getPermutation(int n, int k) {
-        List<Integer> choices = new LinkedList<Integer>();
-        for(int i = 1; i <= n; ++i) choices.add(i);
-        backtrack(choices, new LinkedList<Integer>(), k);
-        return result;
-    }
-    
-    private void backtrack(List<Integer> choices, List<Integer> permutation, int k) {
-        if(choices.size() == 0) {
-            cnt++;
-            if(cnt == k) {
-                result = toString(permutation);
-            }
-            return;
-        }
-        for(int i = 0; i < choices.size(); ++i) {
-            int choice = choices.get(i);
-            permutation.add(choice);
-            choices.remove(i);
-            backtrack(choices, permutation, k);
-            choices.add(i, choice);
-            permutation.remove(permutation.size() - 1);
-            if(cnt == k) break;
-        }
-        
-    }
-    
-    private String toString(List<Integer> permutation) {
-        StringBuilder s = new StringBuilder();
-        for(int i = 0; i < permutation.size(); ++i) {
-            s.append(permutation.get(i));
-        }
-        return s.toString();
-    }
-}
-```
-
-#### Cantor Expansion
-
-Please click [here](https://zhuanlan.zhihu.com/p/39377593) for details about cantor expansion.
-
-```java
-class Solution {
-    int cnt = 0;
-    String result = "";
-    public String getPermutation(int n, int k) {
-        StringBuilder sb = new StringBuilder();
-        boolean[] used = new boolean[n];
-
-        k = k - 1;
-        int factor = 1;
-        for (int i = 1; i < n; i++) {
-            factor *= i;
-        }
-
-        for (int i = 0; i < n; i++) {
-            int index = k / factor;
-            k = k % factor;
-            for (int j = 0; j < n; j++) {
-                if (used[j] == false) {
-                    if (index == 0) {
-                        used[j] = true;
-                        sb.append((char) ('0' + j + 1));
-                        break;
-                    } else {
-                        index--;
-                    }
-                }
-            }
-            if (i < n - 1) {
-                factor = factor / (n - 1 - i);
-            }
-        }
-
-        return sb.toString();
-    }
-}
-```
-
-<a href="#excercises">Back to Excercises</a>
-
-</br>
-
-</br>
-
 <a name="77"></a>
 
 ### 77. Combinations
@@ -626,16 +569,12 @@ class Solution {
 class Solution {
     List<List<Integer>> results = new LinkedList<List<Integer>>();
     public List<List<Integer>> subsets(int[] nums) {
-        results.add(new ArrayList<Integer>());
-        if(nums.length == 0) return results;
         backtrack(nums, 0, new LinkedList<Integer>());
         return results;
     }
     
     private void backtrack(int[] nums, int index, List<Integer> subset) {
-        if(subset.size() != 0) {
-            results.add(new LinkedList<Integer>(subset));
-        } 
+        results.add(new LinkedList<Integer>(subset));
         for(int i = index; i<nums.length; ++i) {
             subset.add(nums[i]);
             backtrack(nums, i + 1, subset);
@@ -711,15 +650,11 @@ class Solution {
     List<List<Integer>> results = new LinkedList<List<Integer>>();
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         Arrays.sort(nums);
-        results.add(new LinkedList<Integer>());
-        if(nums.length == 0) return results;
         traverse(nums, 0, new LinkedList<Integer>());
         return results;
     }
     private void traverse(int[] nums, int index, List<Integer> subset) {
-        if(subset.size() != 0) {
-            results.add(new LinkedList<Integer>(subset));
-        }
+        results.add(new LinkedList<Integer>(subset));
         for(int i = index; i<nums.length; ++i) {
             if(i == index || nums[i] != nums[i-1]) {
                 subset.add(nums[i]);
@@ -877,6 +812,45 @@ class Solution {
                 sentence.add(sub);
                 dfs(i, sentence);
                 sentence.remove(sentence.size() - 1);
+            }
+        }
+    }
+}
+```
+
+<a href="#excercises">Back to Excercises</a>
+
+</br>
+
+</br>
+
+<a name="216"></a>
+
+### 216. Combination Sum III
+
+```java
+class Solution {
+    List<List<Integer>> results = new ArrayList<List<Integer>>();
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        dfs(1, new LinkedList<Integer>(), n, k);
+        return results;
+    }
+    
+    private void dfs(int start, List<Integer> combination, int target, int k) {
+        if(combination.size() == k) {
+            if(target == 0) {
+                results.add(new LinkedList<Integer>(combination));
+            }
+            return;
+        }
+        for(int i = start; i <= 9; ++i) {
+            if(combination.contains(i)) {
+                continue;
+            }
+            if(target >= i) {
+                combination.add(i);
+                dfs(i + 1, combination, target - i, k);
+                combination.remove(combination.size() - 1);
             }
         }
     }
@@ -1190,8 +1164,7 @@ public class Solution {
 
 ## References
 
-[^1]: Artificial Intelligence A Modern Approach 3rd Edition. Chapter 18. p698
-[^2]: https://github.com/labuladong/fucking-algorithm/blob/english/think_like_computer/DetailsaboutBacktracking.md
+[^1]: https://github.com/labuladong/fucking-algorithm/blob/english/think_like_computer/DetailsaboutBacktracking.md
 [^3]: https://leetcode.com/problems/n-queens/discuss/580638/Java-Backtracking-solution
 [^4]: https://leetcode.com/problems/n-queens-ii/discuss/580675/Java-simple-solution....backtracking.
 [^5]: https://zhuanlan.zhihu.com/p/39377593
